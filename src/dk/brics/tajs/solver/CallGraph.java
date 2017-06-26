@@ -220,7 +220,7 @@ public class CallGraph<StateType extends IState<StateType, ContextType, CallEdge
         return b.toString();
     }
 
-    private Map<Function, Set<AbstractNode>> getReverseEdgesIgnoreContexts() {
+    public Map<Function, Set<AbstractNode>> getReverseEdgesIgnoreContexts() {
         Map<Function, Set<AbstractNode>> m = newMap();
         for (Map.Entry<BlockAndContext<ContextType>, Set<ReverseEdge<ContextType>>> me : call_sources.entrySet()) {
             BasicBlock b = me.getKey().getBlock();

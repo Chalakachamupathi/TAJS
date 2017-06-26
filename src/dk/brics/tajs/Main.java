@@ -19,6 +19,7 @@ package dk.brics.tajs;
 import dk.brics.tajs.analysis.Analysis;
 import dk.brics.tajs.analysis.AsyncEvents;
 import dk.brics.tajs.flowgraph.FlowGraph;
+import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.flowgraph.HostEnvSources;
 import dk.brics.tajs.flowgraph.JavaScriptSource;
 import dk.brics.tajs.flowgraph.JavaScriptSource.Kind;
@@ -48,6 +49,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
@@ -69,17 +71,18 @@ public class Main {
      * Terminates with System.exit.
      */
     public static void main(String[] args) {
-        try {
-            initLogging();
-            Analysis a = init(args, null);
-            if (a == null)
-                System.exit(-1);
-            run(a);
-            System.exit(0);
-        } catch (AnalysisException e) {
-            e.printStackTrace();
-            System.exit(-2);
-        }
+        Controler.controller(args);
+//        try {
+//            initLogging();
+//            Analysis a = init(args, null);
+//            if (a == null)
+//                System.exit(-1);
+//            run(a);
+//            System.exit(0);
+//        } catch (AnalysisException e) {
+//            e.printStackTrace();
+//            System.exit(-2);
+//        }
     }
 
     /**
@@ -225,6 +228,7 @@ public class Main {
 
         if (Options.get().isFlowGraphEnabled())
             dumpFlowGraph(analysis.getSolver().getFlowGraph(), true);
+
 
         enterPhase(AnalysisPhase.SCAN, monitoring);
         analysis.getSolver().scan();
