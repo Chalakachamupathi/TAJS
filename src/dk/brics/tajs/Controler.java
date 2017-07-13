@@ -61,9 +61,9 @@ public static void controller(String [] args){
     String flowgraph = "-flowgraph";
     String callgraph = "-callgraph";
 
-    List<String> commonFunctionNames = new ArrayList<>();
+    //List<String> commonFunctionNames = new ArrayList<>();
 
-    liybryFunctions = Controler.<FlowGraph>fileAnalser(new String[]{libName,flowgraph},true).getFunctions();
+    //liybryFunctions = Controler.<FlowGraph>fileAnalser(new String[]{libName,flowgraph},true).getFunctions();
 
     //classFunctions  = Controler.<FlowGraph>fileAnalser(new String[]{fileName,flowgraph}, true).getFunctions();
 
@@ -77,7 +77,7 @@ public static void controller(String [] args){
         Function f = me.getKey();
         if (f.getName()!= null)
         dependancyFunctionsNames.add("function "+ f.getName());
-        System.out.println("..........lllllll......"+f.getName());
+        //System.out.println("..........lllllll......"+f.getName());
     }
 
     JSParser fileSearch = new JSParser();
