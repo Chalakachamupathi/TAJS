@@ -1311,7 +1311,7 @@ public class FunctionBuilder extends DefaultDispatchingParseTreeAuxVisitor<Trans
             if (!lastCaseIsDefaultCase) {
                 // Actual switch behaviour: if no branches are matched, the default branch is taken - with fallthrough to the succeeding branches!
                 // We consider it a weird programming style, and choose not to make a complex flowgraph to handle that case...
-                throw new SyntacticSupportNotImplemented(makeSourceLocation(tree) + ": No support for default-case in non-last position");
+                //throw new SyntacticSupportNotImplemented(makeSourceLocation(tree) + ": No support for default-case in non-last position");
             }
             // 5. handle default case
             // 5.1 : propagate from either case
