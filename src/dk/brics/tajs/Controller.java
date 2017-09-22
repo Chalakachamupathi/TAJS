@@ -40,12 +40,12 @@ public class Controller {
     }
 
     public void controller(String [] args){
-        String libName = args[0];
-        String fileName = args[1];
+        String libName = args[1];
+        String fileName = args[0];
         String callgraph = "-callgraph";
 
 
-        CallGraph cg  = Controller.this.<CallGraph>fileAnalser(new String[]{callgraph, fileName, libName}, false);
+        CallGraph cg  = Controller.this.<CallGraph>fileAnalser(new String[]{callgraph, libName, fileName }, false);
 
         Set<Map.Entry<Function, Set<AbstractNode>>> teme = cg.getReverseEdgesIgnoreContexts().entrySet();
 
@@ -58,7 +58,7 @@ public class Controller {
         JSParser fileSearch = new JSParser();
         String[] fn = this.dependancyFunctionsNames.toArray(new String[this.dependancyFunctionsNames.size()]); // Functions Array
         try {
-            fileSearch.parseFile("/home/scc_ubuntu/Documents/simple.js", fn); // Input File
+            fileSearch.parseFile(libName, fn); // Input File
         } catch ( Exception e){
             e.printStackTrace();
         }
